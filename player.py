@@ -38,8 +38,8 @@ class Player:
 		x,y = self.direction
 
 		# Calculate the new position of the snake
-		new_pos_x = current_pos[0] + (x * (self.size) / 4)
-		new_pos_y = current_pos[1] + (y * (self.size) / 4)
+		new_pos_x = (current_pos[0] + (x * self.size)) % 800
+		new_pos_y = (current_pos[1] + (y * self.size)) % 600
 		new_pos = (new_pos_x,new_pos_y)
 
 		if len(self.parts) > 2 and new_pos in self.parts[2:]:
