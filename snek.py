@@ -87,8 +87,17 @@ while continueGame:
 	# --Game Logic--
 	# Check if the snake eats the food
 	if eatsFood():
-		snake.length += 1
-		snake.score += 1
+		if food.color == Colors["yellow"]:
+			snake.length += 1
+			snake.score += 1
+		elif food.color == Colors["red"]:
+			snake.score = 0
+			if snake.length > 1:
+				snake.length -= 1
+				snake.parts.pop()
+		food.randomize_position()
+
+	if food.can_destroy():
 		food.randomize_position()
 
 	# Check if the snake is not going out of bounds
